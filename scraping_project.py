@@ -56,9 +56,7 @@ while True:
 
 
     guess_1 = input("Who said this? " + quote + "\n")
-    if guess_1 == author:
-        print("You win!!!")
-    else:
+    if guess_1 != author:
         #scrape birthdate and place using href from quote to go to info page of author
         url = f"https://quotes.toscrape.com{href}/"
         r = requests.get(url)
@@ -67,24 +65,21 @@ while True:
         birthplace = soup.find(class_="author-born-location").getText()
         guess_2 = input(f"Incorrect! Here's a hint. The author was born on {birthdate} {birthplace}. Who is it??"  + "\n")
 
-        if guess_2 == author:
-            print("You win!!!")
-
-        else:
+        if guess_2 != author:
+            #get the first letter of the author's first name
             guess_3 = input(f"Incorrect! Here's another hint. The author's first name starts with {author[0]}. Who is it??"  + "\n")
 
-            if guess_3 == author:
-                print("You win!!!")
-
-            else:
+            if guess_3 != author:
                 #get the first letter of the author's last name
                 guess_4 = input(f"Incorrect! Here's another hint. The author's last name starts with {author.split(" ")[-1][0]}'. Who is it??"  + "\n")
 
-                if guess_4 == author:
-                    print("You win!!!")
-
-                else:
+                if guess_4 != author:
                     print(f"You're out of guesses! The author was {author}!!")
+                    if not play_again():
+                        quit()
+                    else:
+                        continue
+    print("You win!!")
     #ask if player wants to play again
     if not play_again():
         quit()
