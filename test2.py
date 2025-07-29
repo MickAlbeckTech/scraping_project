@@ -1,6 +1,9 @@
-author = "C.S Lewis"
+list_of_lists = []
+with open("micky.txt", "r") as file:
+    for line in file:
+        list_of_lists.append(line.strip().split("*"))
 
-a = author.split(" ")
-print(a[-1][0])
+print(list_of_lists)
 
 
+# TODO spend more time on understanding how this works

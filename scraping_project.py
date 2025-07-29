@@ -2,6 +2,11 @@ from bs4 import BeautifulSoup
 import requests
 import random
 
+
+
+
+
+
 def play_again() -> bool:
     """Asks player if they want to play again, returns True or False"""
     response = input("Would you like to play again? (Y/N)")
@@ -45,6 +50,8 @@ while True:
     #go to next page by changing page number in url
     page += 1
 
+
+
 #now we have the 100 quotes, make a new loop for the game
 while True:
     #choose a random quote from the list of 100 quotes
@@ -84,7 +91,7 @@ while True:
     if not play_again():
         quit()
 
-# TODO: how to move "You win!!" print statement so it's only coded once
+
 # TODO: make some functions to make the code tidier 
 
 
